@@ -25,7 +25,7 @@
 
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="{% url 'mainapp:mainapp' %}">
                 <img src="{% static '/img/logo.png' %}" alt="">
@@ -33,11 +33,11 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> {% endcomment %}
 
             {% include 'mainapp/includes/inc_main_menu.html'%}
-        </div>
-    </nav>
+        {% comment %} </div>
+    </nav> {% endcomment %}
 
 
 
@@ -67,7 +67,7 @@
                 <ul class="list-unstyled">
                     <li><a href="{% url 'mainapp:mainapp'%}">Домашняя</a></li>
                     <li><a href="{% url 'mainapp:news'%}">Новости</a></li>
-                    <li><a href="{% url 'mainapp:login'%}">Войти</a></li>
+                    {% if user.is_authenticated %}<li><a href="{% url 'authapp:logout' %}">Выйти</a></li>{% else %}<li><a href="{% url 'authapp:login' %}">Войти</a></li>{% endif %}
                 </ul>
                 </p>
             </div>
@@ -80,7 +80,7 @@
                     <li><a href="#">Положения &amp; Условия</a></li>
                     <li><a href="#">Конфиденциальность &amp; Cookies</a></li>
                     <li><a href="#">Документация по API</a></li>
-                    <li><a href="doc_site.html">Документация по сайту</a></li>
+                    <li><a href="{% url 'mainapp:docs'%}">Документация по сайту</a></li>
                 </ul>
                 </p>
             </div>
@@ -117,21 +117,21 @@
 
     <!-- /Footer -->
 
-
-
-
     <!-- JavaScript section -->
     <!-- Bootstrap -->
-    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static '/js/popper.min.js' %}"></script>
-    <script src="{% static '/js/bootstrap.min.js' %}"></script>
-
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- ChartJs -->
-    <script src="{% static '/js/Chart.min.js' %}"></script>
-
+    <script src="{% static 'js/Chart.min.js' %}"></script>
     <!-- FontAwesome -->
-    <script src="{% static '/js/fontawesome.all.min.js' %}"></script>
-
+    <script src="{% static 'js/fontawesome.all.min.js' %}"></script>
+    {% block js %}
+    <script>
+    $(document).ready(function () {
+    {% if messages %}$(".toast").toast({ delay: 5000 }); $(".toast").toast("show");{% endif %}});
+    </script>
+    {% endblock js %}
 
 
 </body>

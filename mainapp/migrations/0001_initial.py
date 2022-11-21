@@ -11,6 +11,7 @@ class Migration(migrations.Migration):
     dependencies = [
     ]
 
+
     operations = [
         migrations.CreateModel(
             name='Course',

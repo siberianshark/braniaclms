@@ -9,7 +9,7 @@ urlpatterns = [
     path('courses/', views.CoursesView.as_view(), name="courses"),
     path('docs/', views.DocsView.as_view(), name="docs"),
     path('', views.IndexView.as_view(), name="mainapp"),
-    path('login/', views.LoginView.as_view(), name="login"),
     path('news/', views.NewsView.as_view(), name="news"),
-    path('news/<int:page>/', views.NewsWithPaginatorView.as_view(), name="news_paginator"),
+    path('news/<int:page>/', views.NewsWithPaginatorView.as_view(),
+         name="news_paginator"),
 ]
