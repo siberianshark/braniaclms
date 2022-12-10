@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/home/shark/Desktop/djangoBasics/braniaclms/venv/bin/python3.8",
+    "python.analysis.extraPaths": [
+        "./config"
+    ]
+}
