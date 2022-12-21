@@ -136,3 +136,5 @@ wcwidth==0.2.5
 wsproto==1.2.0
 xkit==0.0.0
 zipp==1.0.0
+gunicorn
+psycopg2-binary
